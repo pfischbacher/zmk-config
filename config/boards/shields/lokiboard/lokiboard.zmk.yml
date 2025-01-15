@@ -1,0 +1,13 @@
+file_format: "1"
+id: lokiboard
+name: Lokiboard
+type: shield
+url: https://github.com/pfischbacher/lokiboard/
+requires: [pro_micro]
+exposes: [i2c_oled]
+features:
+  - keys
+  - studio
+siblings:
+  - lokiboard_left
+  - lokiboard_right
