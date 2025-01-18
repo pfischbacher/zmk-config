@@ -1,0 +1,7 @@
+# Vim
+## Swap
+[._]*.sw[a-p]
+
+## Session
+Session.vim
+Sessionx.vim
