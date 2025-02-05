@@ -16,9 +16,9 @@
 
 // Switch Buttons
 #define LANG_MOD  &kp LANG_ZENKAKUHANKAKU
-#define NUM_MOD   $lt NUM_LAY LEFT_GUI
-#define SYM_MOD   $lt SYM_LAY SPACE
-#define CTRL_MOD  $lt CTRL_LAY TAB
+#define NUM_MOD   &lt NUM_LAY LEFT_GUI
+#define SYM_MOD   &lt SYM_LAY SPACE
+#define CTRL_MOD  &lt CTRL_LAY TAB
 
 
 / {
