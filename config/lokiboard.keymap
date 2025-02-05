@@ -66,10 +66,10 @@
 	    bindings = <
         //╭───────────┬──────────┬───────────┬──────────┬──────────┬───────────╮   ╭───────────┬──────────┬──────────┬────────────┬───────────┬────────────╮
         //│  !        │  "       │  #        │  $       │  %       │  &        │   │  '        │  ^       │  @       │  `         │  \ ￥     │  ~         │
-            &kp EXCL    &kp DQT    &kp HASH   &kp DLLR   &kp PRCNT  &kp AMPS         &kp SQT    &kp CARET  &kp AT     &kp GRAVE    &kp FSLH   &kp TILDE
+            &kp EXCL    &kp DQT    &kp HASH   &kp DLLR   &kp PRCNT  &kp AMPS         &kp SQT    &kp CARET  &kp AT     &kp GRAVE    &kp FSLH     &kp TILDE
         //├───────────┼──────────┼───────────┼──────────┼──────────┼───────────┤   ├───────────┼──────────┼──────────┼────────────┼───────────┼────────────┤
         //│  /        │  \       │  [        │  {       │  (       │  ;        │   │  :        │  )       │  }       │  ]         │  ?        │  _         │
-            &kp FSLH   &kp BSLH    &kp LBRT   &kp LBRC   &kp LPAR   &kp SEMI         &kp COLON   &kp RPAR   &kp RBRC   &kp RBRT     &kp QMARK   &kp UNDER
+            &kp FSLH    &kp BSLH   &kp LBKT   &kp LBRC   &kp LPAR   &kp SEMI         &kp COLON   &kp RPAR   &kp RBRC   &kp RBKT     &kp QMARK   &kp UNDER
         //├───────────┼──────────┼───────────┼──────────┼──────────┤───────────┤   ├───────────┼──────────┼──────────┼────────────┼───────────┼────────────┤
 	//│           │ CapsLock │ PrintSc   │  INSERT  │  DELETE  │           │   │  =        │  +       │          │            │           │            │
             &trans      &kp CAPS   &kp PSCRN   &kp INS    &kp DEL    &trans          &kp EQUAL   &kp PLUS   &trans     &trans       &trans      &trans
