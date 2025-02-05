@@ -16,7 +16,7 @@
 
 // Switch Buttons
 #define LANG_MOD  &kp LANG_ZENKAKUHANKAKU
-#define NUM_MOD   &lt NUM_LAY LEFT_GUI
+#define NUM_MOD   &lt NUM_LAY LGUI
 #define SYM_MOD   &lt SYM_LAY SPACE
 #define CTRL_MOD  &lt CTRL_LAY TAB
 
@@ -38,12 +38,12 @@
             &kp LCTRL   &kp Q    &kp X      &kp M        &kp C       &kp V             &kp K       &kp P         &kp DOT      &kp COMMA   &kp MINUS   &kp FSLH
         //╰───────────┴────────┴──────────┼────────────┼────────────┼────────────┤   ├───────────┼─────────────┼────────────┼───────────┴───────────┴────────────╯
         //                                │ NUM Layer  │  SPACE     │  LSHIFT    │   │  ENTER    │ Sym Layer   │ CTRL Layer │ 
-                                        &lt NUM_MOD TAB  &kp SPACE    &kp LSHIFT       &kp ENTER   SYM_MOD       CTRL_MOD
+                                            NUM_MOD      &kp SPACE    &kp LSHIFT       &kp ENTER   SYM_MOD       CTRL_MOD
         //                                ╰────────────┴────────────┴────────────╯   ╰───────────┴─────────────┴────────────╯
             >;
         };
 
-        num_mod {
+        num_layer {
             display-name = "Num Layer";
             bindings = <
         //╭───────────┬──────────┬───────────┬───────────┬──────────┬──────────╮   ╭────────────┬──────────┬──────────┬──────────┬──────────┬────────────╮
@@ -61,7 +61,7 @@
         //                                   ╰───────────┴──────────┴──────────╯   ╰────────────┴──────────┴──────────╯
             >;
         };
-        sym_mod {
+        sym_layer {
             display-name = "Symbol Layer";
 	    bindings = <
         //╭───────────┬──────────┬───────────┬──────────┬──────────┬───────────╮   ╭───────────┬──────────┬──────────┬────────────┬───────────┬────────────╮
@@ -81,14 +81,14 @@
         };
 
 
-        bt_control {
+        ctrl_layer {
             display-name = "Control Layer";
             bindings = <
         //╭────────────┬────────┬────────┬────────┬──────────────┬──────────────╮   ╭─────────────┬─────────────┬─────────────┬────────┬────────┬────────╮
         //│  BT CLEAR  │        │        │        │  MUTE        │              │   │             │             │             │        │        │        │
             &bt BT_CLR   &trans   &trans   &trans   &kp K_MUTE     &trans             &trans        &trans        &trans        &trans   &trans   &trans
 	//├────────────┼────────┼────────┼────────┼──────────────┼──────────────┤   ├─────────────┼─────────────┼─────────────┼────────┼────────┼────────┤
-        //│            │        │        │        │ VOL UP       │  INC BRIGHT  │   │  BT 0       │  BT 1       │ BT 2        │        │        │        │
+        //│            │        │        │        │ VOL UP       │  INC BRIGHT  │   │  PROFILE 0  │  PROFILE 1  │ PROFILE 2   │        │        │        │
             &trans       &trans   &trans   &trans   &kp C_VOL_UP   &kp C_BRI_UP       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &trans   &trans   &trans
         //├────────────┼────────┼────────┼────────┼──────────────┤──────────────┤   ├─────────────┼─────────────┼─────────────┼────────┼────────┼────────┤
         //│ LOCK       │        │        │        │ VOL DN       │  DEC BRIGHT  │   │             │             │             │        │        │        │
