@@ -93,7 +93,7 @@
             &trans       &trans   &trans   &trans   &kp C_VOL_UP   &kp C_BRI_UP       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &trans   &trans   &trans
         //├────────────┼────────┼────────┼────────┼──────────────┤──────────────┤   ├─────────────┼─────────────┼─────────────┼────────┼────────┼────────┤
         //│ LOCK       │ LOCK 2 │        │        │ VOL DN       │  DEC BRIGHT  │   │             │             │             │        │        │        │
-            &kp C_AL_LOCK   &kp LOCK   &trans   &trans   &kp C_VOL_DN   &kp C_BRI_DEC      &trans        &trans        &trans        &trans   &trans   &trans
+            &kp C_AL_LOCK   &kp K_LOCK   &trans   &trans   &kp C_VOL_DN   &kp C_BRI_DEC      &trans        &trans        &trans        &trans   &trans   &trans
         //╰────────────┴────────┴────────┼────────┼──────────────┼──────────────┤   ├─────────────┼─────────────┼─────────────┼────────┴────────┴────────╯
         //                               │        │              │              │   │             │             │             │ 
                                            &trans   &trans         &trans             &trans        &trans        &trans
