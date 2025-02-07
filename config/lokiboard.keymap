@@ -10,14 +10,14 @@
 #include "locale/keys_jp.h"
 
 // Layers 
-#define DEFAULT   0
-#define NUM_LAY   1
-#define SYM_LAY   2
+#define DEFAULT    0
+#define LEFT_LAY   1
+#define RIGHT_LAY  2
 
 // Switch Buttons
-#define LANG_MOD    &kp JP_LANG
-#define NUM_MOD     &lt NUM_LAY SPACE
-#define SYM_MOD     &lt SYM_LAY TAB
+#define LANG_MOD     &kp JP_LANG
+#define LEFT_MOD     &lt LEFT_LAY SPACE
+#define RIGHT_MOD    &lt RIGHT_LAY TAB
 
 
 / {
@@ -28,7 +28,7 @@
             bindings = <
         //╭───────────┬────────┬──────────┬────────────┬────────────┬────────────╮   ╭───────────┬─────────────┬─────────┬───────────┬───────────┬────────────╮
         //│  ESC      │  B     │  L       │  D         │  W         │   Z        │   │   '       │  F          │  O      │  U        │  J        │  :         │
-            &kp ESC     &kp B      &kp L      &kp D      &kp W        &kp Z            &kp SQT     &kp F         &kp O     &kp U       &kp J       &kp COLON 
+            &kp ESC     &kp B      &kp L      &kp D      &kp W        &kp Z           &kp JP_SQT   &kp F         &kp O     &kp U       &kp J       &kp JP_COLON 
         //├───────────┼────────┼──────────┼────────────┼────────────┼────────────┤   ├───────────┼─────────────┼─────────┼───────────┼───────────┼────────────┤
         //│  LALT     │  N     │  R       │  T         │  S         │  G         │   │  Y        │  H          │  A      │  E        │  I        │  BACKSPACE │
             &kp LALT    &kp N    &kp R      &kp T        &kp S        &kp G            &kp Y       &kp H         &kp A     &kp E       &kp I       &kp BSPC
@@ -36,14 +36,14 @@
         //│  LCTRL    │  Q     │  X       │  M         │  C         │  V         │   │  K        │  P          │  . >    │  , <      │  - =      │  /         │
             &kp LCTRL   &kp Q    &kp X      &kp M        &kp C        &kp V            &kp K       &kp P         &kp DOT   &kp COMMA   &kp MINUS   &kp FSLH
         //╰───────────┴────────┴──────────┼────────────┼────────────┼────────────┤   ├───────────┼─────────────┼─────────┼───────────┴───────────┴────────────╯
-        //                                │ SUPER      │ NUM Layer  │  LSHIFT    │   │  ENTER    │ SYM Layer   │ Tab     │ 
-                                            &kp LGUI     NUM_MOD      &kp LSHIFT       &kp ENTER   SYM_MOD       &kp TAB
+        //                                │ SUPER      │ LEFT Layer │  LSHIFT    │   │ ENTER     │ RIGHT Layer │ Tab     │ 
+                                            &kp LGUI     LEFT_MOD      &kp LSHIFT      &kp ENTER   RIGHT_MOD     &kp TAB
         //                                ╰────────────┴────────────┴────────────╯   ╰───────────┴─────────────┴─────────╯
             >;
         };
 
-        num_layer {
-            display-name = "Num Layer";
+        left_layer {
+            display-name = "Left Layer";
             bindings = <
         //╭───────────┬────────────┬────────────┬────────────┬────────────┬────────────╮   ╭─────────────┬─────────────┬────────────┬─────────────┬───────────┬─────────────╮
         //│  !        │  "         │  #         │  $         │  %         │  &         │   │  '          │  ^          │  @         │  `          │  \ ￥     │  ~          │
@@ -61,8 +61,8 @@
             >;
         };
 
-        sym_layer {
-            display-name = "Symbol Layer";
+        right_layer {
+            display-name = "Right Layer";
 	    bindings = <
         //╭────────────┬──────────┬───────────┬───────────┬────────────┬───────────╮   ╭──────────────┬─────────────┬─────────────┬──────────────┬───────────┬────────────╮
         //│  F1        │  F2      │  F3       │  F4       │  F5        │  F6       │   │ VOL UP       │ VOL DN      │ INC BRIGHT  │ DEC BRIGHT   │           │  BT CLEAR  │
