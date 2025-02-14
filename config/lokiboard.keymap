@@ -34,7 +34,7 @@
             &kp LALT    &kp N    &kp R      &kp T        &kp S        &kp G            &kp Y       &kp H         &kp A           &kp E       &kp I       &kp RCTRL
         //├───────────┼────────┼──────────┼────────────┼────────────┤────────────┤   ├───────────┼─────────────────────────────┼──────── ──┼───────────┼─────────────┤
         //│  LCTRL    │  Q     │  X       │  M         │  C         │  V         │   │  K        │  P          │  . >          │  , <      │  - =      │  /          │
-            &kp LCTRL   &kp Q    &kp X      &kp M        &kp C        &kp V            &kp K       &kp P         &kp DOT         &kp COMMA   &kp MINUS   &kp FSLH
+            &kp LCTRL   &kp Q    &kp X      &kp M        &kp C        &kp V            &kp K       &kp P         &kp DOT         &kp COMMA   &kp MINUS   &kp JP_FSLH
         //╰───────────┴────────┴──────────┼────────────┼────────────┼────────────┤   ├───────────┼─────────────┼───────────────┼───────────┴───────────┴─────────────╯
         //                                │ SUPER      │ LEFT Layer │  LSHIFT    │   │ ENTER     │ RIGHT Layer │ BACKSPACE/ALT │ 
                                             &kp LGUI     LEFT_MOD      &kp LSHIFT      &kp ENTER   RIGHT_MOD     &lt RALT BSPC
@@ -53,10 +53,10 @@
            &kp JP_PLUS  &kp N9       &kp N8       &kp N7       &kp N6       &kp N5           &kp N0        &kp N1        &kp N2       &kp N3        &kp N4      &kp JP_STAR
         //├───────────┼────────────┼────────────┼────────────┼────────────┤────────────┤   ├─────────────┼─────────────┼────────────┼─────────────┼────────────┼─────────────┤
         //│  /        │  \         │  [         │  {         │  (         │  ;         │   │  :          │  )          │  }         │  ]          │  ?         │  _          │
-            &kp FSLH    &kp JP_BSLH &kp JP_LBKT  &kp JP_LBRC  &kp JP_LPAR   &kp SEMI         &kp JP_COLON  &kp JP_RPAR   &kp JP_RBRC  &kp JP_RBKT  &kp QMARK    &kp JP_UNDER
+           &kp JP_FSLH &kp JP_BSLH  &kp JP_LBKT  &kp JP_LBRC  &kp JP_LPAR   &kp SEMI         &kp JP_COLON  &kp JP_RPAR   &kp JP_RBRC  &kp JP_RBKT  &kp QMARK    &kp JP_UNDER
         //╰───────────┴────────────┴────────────┼────────────┼────────────┼────────────┤   ├─────────────┼─────────────┼────────────┼─────────────┴────────────┴─────────────╯
-        //                                      │            │            │            │   │  DELETE     │             │            │ 
-                                                  &trans       &trans       &trans           &kp DEL       &trans        &trans
+        //                                      │            │            │ LSHIFT     │   │  DELETE     │ RSHIFT      │            │ 
+                                                  &trans       &trans       &kp LSHIFT       &kp DEL       &kp RSHIFT    &trans
         //                                      ╰────────────┴────────────┴────────────╯   ╰─────────────┴─────────────┴────────────╯
             >;
         };
