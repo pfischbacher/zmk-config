@@ -125,7 +125,7 @@
             &trans   &kp F12   &kp F7   &kp F8   &kp F9    &kp SLCK         &trans         &trans        &trans        &trans         &trans        &bt BT_CLR
         //├────────┼─────────┼────────┼────────┼─────────┼────────────┤   ├──────────────┼─────────────┼─────────────┼──────────────┼─────────────┼────────────┤
 	//│        │  F11    │  F4    │  F5    │  F6     │  PrintSc   │   │  MUTE        │ VOL UP      │ VOL DN      │ INC BRIGHT   │ DEC BRIGHT  │            │
-            &trans   &kp F4    &kp F4   &kp F5  &kp F6     &kp PRSCRN       &kp K_MUTE    &kp K_VOL_UP  &kp K_VOL_DN   &kp C_BRI_UP  &kp C_BRI_DN     &trans
+            &trans   &kp F11   &kp F4   &kp F5   &kp F6    &kp PSCRN        &kp K_MUTE    &kp K_VOL_UP  &kp K_VOL_DN   &kp C_BRI_UP  &kp C_BRI_DN   &trans
         //├────────┼─────────┼────────┼────────┼─────────┤────────────┤   ├──────────────┼─────────────┼─────────────┼──────────────┼─────────────┼────────────┤
         //│        │  F10    │  F1    │  F2    │  F3     │                │  PROFILE 0   │  PROFILE 1  │  PROFILE 2  │  PROFILE 3   │             │  INSERT    │
             &trans   &kp F10   &kp F1   &kp F2   &kp F3    &trans           &bt BT_SEL 0   &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3                 &kp INS        
