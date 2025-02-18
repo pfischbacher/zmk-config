@@ -48,7 +48,7 @@
             bindings = <&kp JP_SQT>, <&kp JP_UNDERSCORE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-        slash_lt: fslh_lt {
+        fslh_lt: fslh_lt {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp JP_FSLH>, <&kp JP_LT>;
