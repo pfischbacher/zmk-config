@@ -38,9 +38,6 @@
             quick-tap-ms = <150>;
             bindings = <&kp>, <&kp>;
         };
-	ht: hold_tap {
-
-};
 
         minus_dqt: minus_dqt {
             compatible = "zmk,behavior-mod-morph";
