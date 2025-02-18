@@ -18,7 +18,7 @@
 #define MOUSE_LAY  4
 
 // Switch Buttons
-#define LANG_MOD    &kp JP_LANG
+#define LANG_MOD    &kp JP_HENKAKU
 #define NUM_MOD     &lt NUM_LAY BSPC
 #define NAV_MOD     &lt NAV_LAY SPACE
 #define FN_MOD      &lt FN_LAY DEL
@@ -51,7 +51,7 @@
         slash_lt: fslh_lt {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp JP_FLSH>, <&kp JP_LT>;
+            bindings = <&kp JP_FSLH>, <&kp JP_LT>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
