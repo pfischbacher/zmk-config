@@ -30,7 +30,7 @@
 // Special Key Behaviours for Graphite
 / {
     behaviors {
-        min_dqt: minus_dqt {
+        minus_dqt: minus_dqt {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp JP_MINUS>, <&kp JP_DQT>;
