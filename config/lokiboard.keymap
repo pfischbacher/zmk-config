@@ -24,8 +24,8 @@
 #define FN_MOD      &lt FN_LAY DEL
 #define MOUSE_MOD   &lt MOUSE_LAY TAB
 
-#define HRML(k1, k2, k3, k4) &lt LGUI k2 &lt LALT k2  &lt LCTRL k3  &lt LSHIFT k4
-#define HRMR(k1, k2, k3, k4) &lt RSHIFT k2 &lt RCTRL k2  &lt RALT k3  &lt RGUI k4
+#define HRML(k1, k2, k3, k4) &lt LGUI k1 &lt LALT k2  &lt LCTRL k3  &lt LSHIFT k4
+#define HRMR(k1, k2, k3, k4) &lt RSHIFT k1 &lt RCTRL k2  &lt RALT k3  &lt RGUI k4
 
 // Special Key Behaviours for Graphite
 / {
