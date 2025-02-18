@@ -7,76 +7,151 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/pointing.h>
 #include "locale/keys_jp.h"
 
 // Layers 
 #define DEFAULT    0
-#define LEFT_LAY   1
-#define RIGHT_LAY  2
+#define NUM_LAY    1
+#define NAV_LAY    2
+#define FN_LAY     3
+#define MOUSE_LAY  4
 
 // Switch Buttons
-#define LANG_MOD     &kp JP_LANG
-#define LEFT_MOD     &lt LEFT_LAY SPACE
-#define RIGHT_MOD    &lt RIGHT_LAY TAB
+#define LANG_MOD    &kp JP_LANG
+#define NUM_MOD     &lt NUM_LAY BSPC
+#define NAV_MOD     &lt NAV_LAY SPACE
+#define FN_MOD      &lt FN_LAY DEL
+#define MOUSE_MOD   &lt MOUSE_LAY TAB
 
+#define HRML(k1, k2, k3, k4) &lt LGUI k2 &lt LALT k2  &lt LCTRL k3  &lt LSHIFT k4
+#define HRMR(k1, k2, k3, k4) &lt RSHIFT k2 &lt RCTRL k2  &lt RALT k3  &lt RGUI k4
+
+// Special Key Behaviours for Graphite
+/ {
+    behaviors {
+        min_dqt: minus_dqt {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp JP_MINUS>, <&kp JP_DQT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        },
+        comma_qmark: comma_qmark {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp JP_COMMA>, <&kp JP_QMARK>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        },
+        sqt_under: sqt_underscore {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp JP_SQT>, <&kp JP_UNDERSCORE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        },
+        slash_lt: fslh_lt {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp JP_FLSH>, <&kp JP_LT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+    };
+};
 
 / {
     keymap {
         compatible = "zmk,keymap";
         default_layer {
-            display-name = "Main Layer";
+            display-name = "Main";
             bindings = <
-        //╭───────────┬────────┬──────────┬────────────┬────────────┬────────────╮   ╭───────────┬─────────────┬───────────────┬───────────┬───────────┬─────────────╮
-        //│  ESC      │  B     │  L       │  D         │  W         │   Z        │   │   '       │  F          │  O            │  U        │  J        │  :          │
-            &kp ESC     &kp B      &kp L      &kp D      &kp W        &kp Z           &kp JP_SQT   &kp F         &kp O           &kp U       &kp J       &kp JP_COLON 
-        //├───────────┼────────┼──────────┼────────────┼────────────┼────────────┤   ├───────────┼─────────────┼───────────────┼───────────┼───────────┼─────────────┤
-        //│  LCTRL    │  N     │  R       │  T         │  S         │  G         │   │  Y        │  H          │  A            │  E        │  I        │  RCTRL      │
-            &kp LCTRL   &kp N    &kp R      &kp T        &kp S        &kp G            &kp Y       &kp H         &kp A           &kp E       &kp I       &kp RCTRL
-        //├───────────┼────────┼──────────┼────────────┼────────────┤────────────┤   ├───────────┼─────────────────────────────┼──────── ──┼───────────┼─────────────┤
-        //│  LALT     │  Q     │  X       │  M         │  C         │  V         │   │  K        │  P          │  . >          │  , <      │  - =      │  /          │
-            &kp LALT    &kp Q    &kp X      &kp M        &kp C        &kp V            &kp K       &kp P         &kp DOT         &kp COMMA   &kp MINUS   &kp JP_FSLH
-        //╰───────────┴────────┴──────────┼────────────┼────────────┼────────────┤   ├───────────┼─────────────┼───────────────┼───────────┴───────────┴─────────────╯
-        //                                │ SUPER      │ LEFT Layer │  LSHIFT    │   │ ENTER     │ RIGHT Layer │ BACKSPACE/ALT │ 
-                                            &kp LGUI     LEFT_MOD      &kp LSHIFT      &kp ENTER   RIGHT_MOD     &lt RALT BSPC
-        //                                ╰────────────┴────────────┴────────────╯   ╰───────────┴─────────────┴───────────────╯
+        //╭───────────┬────────┬───────┬─────────┬─────────┬───────────╮   ╭───────────┬───────────┬────────┬───────────┬──────────┬─────────────╮
+        //│           │  B     │  L    │  D      │  W      │   Z       │   │   '       │  F        │  O     │  U        │  J       │  :          │
+            &trans      &kp B    &kp L   &kp D     &kp W     &kp Z          &sqt_under   &kp F       &kp O    &kp U       &kp J      &kp JP_COLON 
+        //├───────────┼────────┼───────┼─────────┼─────────┼───────────┤   ├───────────┼───────────┼────────┼───────────┼──────────┼─────────────┤
+        //│           │  N     │  R    │  T      │  S      │  G        │   │  Y        │  H        │  A     │  E        │  I       │ , ?         │
+            &trans      &kp N    HRML(R  T,        S,        G)              &kp Y       HRMR(H,     A,       E,          I)         &comma_qmark 
+        //├───────────┼────────┼───────┼─────────┼─────────┤───────────┤   ├───────────┼────────────────────┼──────── ──┼──────────┼─────────────┤
+        //│ 全角/半角 │  Q     │  X    │  M      │  C      │  V        │   │  K        │  P        │  . >   │  - "      │  / <     │             │
+            LANG_MOD    &kp Q    &kp X   &kp M     &kp C     &kp V           &kp K       &kp P       &kp DOT  &minus_dqt  &fslh_lt   &trans 
+        //╰───────────┴────────┴───────┼─────────┼─────────┼───────────┤   ├───────────┼───────────┼────────┼───────────┴──────────┴─────────────╯
+        //                             │ ESC     │ NAV     │ MOUSE     │   │ ENTER     │ NUM Layer │ FN     │ 
+                                         &kp ESC   NAV_MOD   MOUSE_MOD       &kp ENTER   NUM_MOD     FN_MOD
+        //                             ╰─────────┴─────────┴───────────╯   ╰───────────┴───────────┴────────╯
             >;
         };
 
-        left_layer {
-            display-name = "Left Layer";
+        num_layer {
+            display-name = "Num";
             bindings = <
-        //╭───────────┬────────────┬────────────┬────────────┬────────────┬────────────╮   ╭─────────────┬─────────────┬────────────┬─────────────┬────────────┬─────────────╮
-        //│  !        │  %         │  &         │  '         │  \￥       │  ^         │   │  `          │  ^          │  "         │  #          │  $         │  -          │
-            &kp EXCL    &kp PRCNT    &kp JP_AMPS  &kp JP_SQT   &kp JP_YEN  &kp JP_CARET     &kp JP_GRAVE  &kp JP_CARET   &kp JP_DQT   &kp JP_HASH   &kp DLLR     &kp JP_MINUS
-        //├───────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├─────────────┼─────────────┼────────────┼─────────────┼────────────┼─────────────┤
-        //│ +         │  5         │  6         │  7         │  8         │  9         │   │  0          │  1          │  2         │  3          │  4         │  @          │
-           &kp JP_PLUS  &kp N5       &kp N6       &kp N7       &kp N8       &kp N9           &kp N0        &kp N1        &kp N2       &kp N3        &kp N4       &kp JP_AT
-        //├───────────┼────────────┼────────────┼────────────┼────────────┤────────────┤   ├─────────────┼─────────────┼────────────┼─────────────┼────────────┼─────────────┤
-        //│  /        │  \         │  [         │  {         │  (         │  <         │   │  >          │  )          │  }         │  ]          │  ~         │  _          │
-           &kp JP_FSLH &kp JP_BSLH  &kp JP_LBKT  &kp JP_LBRC  &kp JP_LPAR   &kp JP_LT        &kp JP_GT     &kp JP_RPAR   &kp JP_RBRC  &kp JP_RBKT  &kp JP_TILDE  &kp JP_UNDER
-        //╰───────────┴────────────┴────────────┼────────────┼────────────┼────────────┤   ├─────────────┼─────────────┼────────────┼─────────────┴────────────┴─────────────╯
-        //                                      │            │            │ LSHIFT     │   │  DELETE     │ RSHIFT      │            │ 
-                                                  &trans       &trans       &kp LSHIFT       &kp DEL       &kp RSHIFT    &trans
-        //                                      ╰────────────┴────────────┴────────────╯   ╰─────────────┴─────────────┴────────────╯
+        //╭──────────┬────────────┬────────┬────────┬────────┬────────────╮   ╭────────┬────────────┬───────────┬───────────┬──────────┬─────────╮
+        //│  *       │  [ {       │  7 '   │  8     │  9     │   ] }      │   │        │            │           │           │          │         │
+            &trans    &kp JP_LBKT   &kp N7   &kp N8   &kp N9   &kp JP_RBKT      &trans   &trans       &trans       &trans      &trans    &trans
+        //├──────────┼────────────┼────────┼────────┼────────┼────────────┤   ├────────┼────────────┼───────────┼───────────┼──────────┼─────────┤
+        //│          │ +          │  4     │  5     │  6     │  *         │   │        │ RSHIFT     │ RCTRL     │  RALT     │  RGUI    │         │
+            &trans    &kp JP_PLUS   &kp N4   &kp N5   &kp N6  &kp JP_STAR       &trans   &kp RSHIFT   &kp RCTRL   &kp RALT    &kp RGUI   &trans
+        //├──────────┼────────────┼────────┼────────┼────────┤────────────┤   ├────────┼────────────┼───────────┼───────────┼──────────┼─────────┤
+        //│  \       │  -         │  1     │  2     │  3     │  <         │   │        │            │           │           │          │         │
+            &JP_BSLH   &kp MINUS    &kp N1   &kp N2   &kp N3   &kp JP_FSLH      &trans   &trans       &trans       &trans      &trans     &trans
+        //╰──────────┴────────────┴────────┼────────┼────────┼────────────┤   ├────────┼────────────┼───────────┼───────────┴──────────┴─────────╯
+        //                                 │        │  0     │            │   │        │            │           │ 
+                                             &trans   &kp 0   &trans            &trans   &trans       &trans 
+        //                                 ╰────────┴────────┴────────────╯   ╰────────┴────────────┴───────────╯
             >;
         };
 
-        right_layer {
-            display-name = "Right Layer";
+        nav_layer {
+            display-name = "Nav";
 	    bindings = <
-        //╭────────────┬──────────┬───────────┬───────────┬────────────┬───────────╮   ╭──────────────┬─────────────┬─────────────┬──────────────┬───────────┬────────────╮
-        //│  F1        │  F2      │  F3       │  F4       │  F5        │  F6       │   │ VOL UP       │ VOL DN      │ INC BRIGHT  │ DEC BRIGHT   │           │  BT CLEAR  │
-            &kp F1       &kp F2     &kp F3      &kp F4      &kp F5       &kp F6         &kp C_VOL_UP   &kp C_VOL_DN  &kp C_BRI_UP  &kp C_BRI_DEC   &trans      &bt BT_CLR
-        //├────────────┼──────────┼───────────┼───────────┼────────────┼───────────┤   ├──────────────┼─────────────┼─────────────┼──────────────┼───────────┼────────────┤
-	//│  MUTE      │          │  HOME     │  PAGE DN  │  PAGE UP   │  END      │   │  LEFT        │  DOWN       │  UP         │  RIGHT       │           │            │
-            &kp K_MUTE   &trans     &kp HOME    &kp PG_DN   &kp PG_UP    &kp END         &kp LEFT       &kp DOWN      &kp UP        &kp RIGHT      &trans      &trans
-        //├────────────┼──────────┼───────────┼───────────┼────────────┤───────────┤   ├──────────────┼─────────────┼─────────────┼──────────────┼───────────┼────────────┤
-        //│  F7        │  F8      │  F9       │  F10      │  F11       │  F12          │  PROFILE 0   │  PROFILE 1  │ PROFILE 2      CapsLock    │  PrintSc  │  INSERT    │
-            &kp F7       &kp F8     &kp F9      &kp F10     &kp F11      &kp F12        &bt BT_SEL 0   &bt BT_SEL 1  &bt BT_SEL 2   &kp CAPS       &kp PSCRN   &kp INS        
-	//╰────────────┴──────────┴───────────┼───────────┼────────────┼───────────┤   ├──────────────┼─────────────┼─────────────┼──────────────┴───────────┴────────────╯
-        //                                    │           │            │ 全角/半角 │   │              │             │             │ 
-                                                &trans      &trans       LANG_MOD        &trans         &trans        &trans
-        //                                    ╰───────────┴────────────┴───────────╯   ╰──────────────┴─────────────┴─────────────╯
+        //╭────────┬──────────┬───────────┬───────────┬────────────┬────────╮   ╭────────────┬─────────────┬─────────────┬───────────┬────────────┬────────╮
+        //│        │          │           │           │            │        │   │  REDO      │ PASTE       │  COPY       │  CUT      │  UNDO      │        │
+            &trans   &trans     &trans      &trans      &trans       &trans       &kp K_REDO   &kp K_PASTE   &kp K_COPY    &kp K_CUT   &kp K_UNDO   &trans
+        //├────────┼──────────┼───────────┼───────────┼────────────┼────────┤   ├────────────┼─────────────┼─────────────┼───────────┼────────────┼────────┤
+	//│        │ SUPER    │  LALT     │  LCTRL    │  LSHIFT    │        │   │  LEFT      │  DOWN       │  UP         │  RIGHT    │            │        │
+            &trans   &kp LGUI   &kp LALT    &kp LCTRL   &kp LSHIFT   &trans       &kp LEFT     &kp DOWN      &kp UP        &kp RIGHT   &trans       &trans
+        //├────────┼──────────┼───────────┼───────────┼────────────┤────────┤   ├────────────┼─────────────┼─────────────┼───────────┼────────────┼────────┤
+        //│        │          │           │           │            │            │            │  PAGE DN    │  PAGE UP    │  CapsLock │  PrintSc   │  INSERT│
+            &trans   &trans     &trans      &trans      &trans       &trans       &trans       &kp PG_DN     &kp PG_UP     &kp CAPS    &kp PSCRN    &kp INS  
+	//╰────────┴──────────┴───────────┼───────────┼────────────┼────────┤   ├────────────┼─────────────┼─────────────┼───────────┴────────────┴────────╯
+        //                                │           │            │        │   │  ENTER     │  BKSP       │  DEL        │ 
+                                            &trans      &trans       &trans       &kp ENTER    &kp BKSP      &kp DEL
+        //                                ╰───────────┴────────────┴────────╯   ╰────────────┴─────────────┴─────────────╯
+            >;
+        };
+
+        fn_layer {
+            display-name = "Function";
+	    bindings = <
+        //╭────────┬─────────┬────────┬────────┬─────────┬────────────╮   ╭──────────────┬─────────────┬─────────────┬──────────────┬─────────────┬────────────╮
+        //│        │  F12    │  F7    │  F8    │  F9     │ Scroll Lck │   │              │             │             │              │             │  BT CLEAR  │
+            &trans   &kp F12   &kp F7   &kp F8   &kp F9    &kp SLCK         &trans         &trans        &trans        &trans         &trans        &bt BT_CLR
+        //├────────┼─────────┼────────┼────────┼─────────┼────────────┤   ├──────────────┼─────────────┼─────────────┼──────────────┼─────────────┼────────────┤
+	//│        │  F11    │  F4    │  F5    │  F6     │  PrintSc   │   │  MUTE        │ VOL UP      │ VOL DN      │ INC BRIGHT   │ DEC BRIGHT  │            │
+            &trans   &kp F4    &kp F4   &kp F5  &kp F6     &kp PRSCRN       &kp K_MUTE    &kp K_VOL_UP  &kp K_VOL_DN   &kp C_BRI_UP  &kp C_BRI_DN     &trans
+        //├────────┼─────────┼────────┼────────┼─────────┤────────────┤   ├──────────────┼─────────────┼─────────────┼──────────────┼─────────────┼────────────┤
+        //│        │  F10    │  F1    │  F2    │  F3     │                │  PROFILE 0   │  PROFILE 1  │  PROFILE 2  │  PROFILE 3   │             │  INSERT    │
+            &trans   &kp F10   &kp F1   &kp F2   &kp F3    &trans           &bt BT_SEL 0   &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3                 &kp INS        
+	//╰────────┴─────────┴────────┼────────┼─────────┼────────────┤   ├──────────────┼─────────────┼─────────────┼──────────────┴─────────────┴────────────╯
+        //                            │        │         │            │   │              │             │             │ 
+                                        &trans   &trans    &trans           &trans         &trans        &trans
+        //                            ╰────────┴─────────┴────────────╯   ╰──────────────┴─────────────┴─────────────╯
+            >;
+        };
+
+        mouse_layer {
+            display-name = "Mouse";
+	    bindings = <
+        //╭────────┬──────────┬──────────┬───────────┬────────────┬─────────╮   ╭────────────────┬────────────────┬─────────────┬─────────────────┬───────────┬────────╮
+        //│        │          │          │           │            │         │   │  REDO          │ PASTE          │  COPY       │  CUT            │  UNDO     │        │
+            &trans   &trans     &trans     &trans      &trans       &trans        &kp K_REDO       &kp K_PASTE      &kp K_COPY    &kp K_CUT         &kp K_UNDO  &trans
+        //├────────┼──────────┼──────────┼───────────┼────────────┼─────────┤   ├────────────────┼────────────────┼─────────────┼─────────────────┼───────────┼────────┤
+	//│        │ SUPER    │  LALT    │  LCTRL    │  LSHIFT    │         │   │  LEFT          │  DOWN          │ UP          │  RIGHT          │           │        │
+            &trans   &kp LGUI   &kp LALT   &kp LCTRL   &kp LSHIFT   &trans        &mmv MOVE_LEFT  &mmv MOVE_DOWN   &mmv MOVE_UP  &mmv MOVE_RIGHT    &trans      &trans
+        //├────────┼──────────┼──────────┼───────────┼────────────┤─────────┤   ├────────────────┼────────────────┼─────────────┼─────────────────┼───────────┼────────┤
+        //│        │          │          │           │            │             │  SCROLL LEFT   │  SCROLL DOWN   │ SCROLL UP     SCROLL RIGHT    │           │        │
+            &trans   &trans     &trans     &trans      &trans       &trans        &msc SCRL_LEFT   &msc SCRL_DOWN  &msc SCRL_UP   &msc SCRL_RIGHT   &trans      &trans    
+	//╰────────┴──────────┴──────────┼───────────┼────────────┼─────────┤   ├────────────────┼────────────────┼─────────────┼─────────────────┴───────────┴────────╯
+        //                               │           │            │         │   │  MS RIGHT CLK  │  MS LEFT CLCK  │ MS MID CLCK │ 
+                                           &trans      &trans       &trans        &mkp RCLK        &mkp LCLK        &mkp MCLK
+	//                               ╰───────────┴────────────┴─────────╯   ╰────────────────┴────────────────┴─────────────╯
             >;
         };
     };
