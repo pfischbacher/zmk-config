@@ -35,19 +35,19 @@
             #binding-cells = <0>;
             bindings = <&kp JP_MINUS>, <&kp JP_DQT>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
-        },
+        };
         comma_qmark: comma_qmark {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp JP_COMMA>, <&kp JP_QMARK>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
-        },
+        };
         sqt_under: sqt_underscore {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp JP_SQT>, <&kp JP_UNDERSCORE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
-        },
+        };
         slash_lt: fslh_lt {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
