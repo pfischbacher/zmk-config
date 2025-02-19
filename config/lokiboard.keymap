@@ -95,11 +95,11 @@
             display-name = "Num";
             bindings = <
         //╭─────────────┬──────────────┬────────┬────────┬────────┬────────────╮   ╭────────┬────────────┬───────────┬───────────┬──────────┬─────────╮
-        //│             │  [ {         │  7 '   │  8 (   │  9 )   │   ] }      │   │        │            │           │           │          │         │
-            &trans       &kp JP_LBKT     &kp N7   &kp N8   &kp N9   &kp JP_RBKT      &trans   &trans       &trans       &trans      &trans    &trans
+        //│  ^ ~        │  [ {         │  7 '   │  8 (   │  9 )   │   ] }      │   │        │            │           │           │          │         │
+            &kp JP_CARET  &kp JP_LBKT    &kp N7   &kp N8   &kp N9   &kp JP_RBKT      &trans   &trans       &trans       &trans      &trans    &trans
         //├─────────────┼──────────────┼────────┼────────┼────────┼────────────┤   ├────────┼────────────┼───────────┼───────────┼──────────┼─────────┤
-        //│             │ +            │  4 $   │  5 %   │  6 &   │  *         │   │        │ RSHIFT     │ RCTRL     │  RALT     │  RGUI    │         │
-            &trans       &kp JP_PLUS     &kp N4   &kp N5   &kp N6  &kp JP_STAR       &trans   &kp RSHIFT   &kp RCTRL   &kp RALT    &kp RGUI   &trans
+        //│  @ `        │ +            │  4 $   │  5 %   │  6 &   │  *         │   │        │ RSHIFT     │ RCTRL     │  RALT     │  RGUI    │         │
+            &kp JP_AT     &kp JP_PLUS     &kp N4   &kp N5   &kp N6  &kp JP_STAR       &trans   &kp RSHIFT   &kp RCTRL   &kp RALT    &kp RGUI   &trans
         //├─────────────┼──────────────┼────────┼────────┼────────┤────────────┤   ├────────┼────────────┼───────────┼───────────┼──────────┼─────────┤
         //│  \ _        │  - =         │  1 !   │  2 "   │  3 #   │  / ?       │   │        │            │           │           │          │         │
             &kp JP_BSLH   &kp JP_MINUS   &kp N1   &kp N2   &kp N3  &kp JP_FSLH       &trans   &trans       &trans       &trans      &trans     &trans
