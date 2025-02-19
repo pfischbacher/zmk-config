@@ -36,6 +36,7 @@
             flavor = "tap-preferred";
             tapping-term-ms = <220>;
             quick-tap-ms = <150>;
+	    require-prior-idle-ms = <125>;
             bindings = <&kp>, <&kp>;
         };
 
@@ -66,6 +67,13 @@
             bindings = <&kp JP_FSLH>, <&kp JP_LT>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+
+        bksp_num: bksp_num {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <NUM_MOD>, <&kp BKSP>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
     };
 
     keymap {
@@ -84,7 +92,7 @@
             LANG_MOD    &kp Q    &kp X   &kp M     &kp C     &kp V           &kp K       &kp P       &kp DOT  &minus_dqt  &fslh_lt   &trans 
         //╰───────────┴────────┴───────┼─────────┼─────────┼───────────┤   ├───────────┼───────────┼────────┼───────────┴──────────┴─────────────╯
         //                             │ ESC     │ NAV     │ MOUSE     │   │ ENTER     │ NUM Layer │ FN     │ 
-                                         &kp ESC   NAV_MOD   MOUSE_MOD       &kp ENTER   NUM_MOD     FN_MOD
+                                         &kp ESC   NAV_MOD   MOUSE_MOD       &kp ENTER   &bksp_num  FN_MOD
         //                             ╰─────────┴─────────┴───────────╯   ╰───────────┴───────────┴────────╯
             >;
         };
