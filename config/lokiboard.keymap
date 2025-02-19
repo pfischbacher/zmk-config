@@ -159,19 +159,19 @@
         mouse_layer {
             display-name = "Mouse";
 	    bindings = <
-        //╭────────┬──────────┬──────────┬───────────┬────────────┬─────────╮   ╭────────────────┬────────────────┬─────────────┬─────────────────┬───────────┬────────╮
-        //│        │          │          │           │            │         │   │  REDO          │ PASTE          │  COPY       │  CUT            │  UNDO     │        │
-            &trans   &trans     &trans     &trans      &trans       &trans        &kp K_REDO       &kp K_PASTE      &kp K_COPY    &kp K_CUT         &kp K_UNDO  &trans
-        //├────────┼──────────┼──────────┼───────────┼────────────┼─────────┤   ├────────────────┼────────────────┼─────────────┼─────────────────┼───────────┼────────┤
-	//│        │ SUPER    │  LALT    │  LCTRL    │  LSHIFT    │         │   │  LEFT          │  DOWN          │ UP          │  RIGHT          │           │        │
-            &trans   &kp LGUI   &kp LALT   &kp LCTRL   &kp LSHIFT   &trans        &mmv MOVE_LEFT  &mmv MOVE_DOWN   &mmv MOVE_UP  &mmv MOVE_RIGHT    &trans      &trans
-        //├────────┼──────────┼──────────┼───────────┼────────────┤─────────┤   ├────────────────┼────────────────┼─────────────┼─────────────────┼───────────┼────────┤
-        //│        │          │          │           │            │             │  SCROLL LEFT   │  SCROLL DOWN   │ SCROLL UP     SCROLL RIGHT    │           │        │
-            &trans   &trans     &trans     &trans      &trans       &trans        &msc SCRL_LEFT   &msc SCRL_DOWN  &msc SCRL_UP   &msc SCRL_RIGHT   &trans      &trans    
-	//╰────────┴──────────┴──────────┼───────────┼────────────┼─────────┤   ├────────────────┼────────────────┼─────────────┼─────────────────┴───────────┴────────╯
-        //                               │           │            │         │   │  MS RIGHT CLK  │  MS LEFT CLCK  │ MS MID CLCK │ 
-                                           &trans      &trans       &trans        &mkp RCLK        &mkp LCLK        &mkp MCLK
-	//                               ╰───────────┴────────────┴─────────╯   ╰────────────────┴────────────────┴─────────────╯
+        //╭────────┬──────────┬──────────┬───────────┬────────────┬─────────╮   ╭───────────────┬────────────────┬───────────────┬──────────────┬─────────────────┬────────╮
+        //│        │          │          │           │            │         │   │  REDO         │ PASTE          │  COPY         │  CUT         │  UNDO           │        │
+            &trans   &trans     &trans     &trans      &trans       &trans        &kp K_REDO      &kp K_PASTE      &kp K_COPY      &kp K_CUT      &kp K_UNDO        &trans
+        //├────────┼──────────┼──────────┼───────────┼────────────┼─────────┤   ├───────────────┼────────────────┼───────────────┼──────────────┼─────────────────┼────────┤
+	//│        │ SUPER    │  LALT    │  LCTRL    │  LSHIFT    │         │   │               │  LEFT          │  DOWN         │ UP           │  RIGHT          │        │
+            &trans   &kp LGUI   &kp LALT   &kp LCTRL   &kp LSHIFT   &trans        &trans          &mmv MOVE_LEFT  &mmv MOVE_DOWN   &mmv MOVE_UP   &mmv MOVE_RIGHT   &trans
+        //├────────┼──────────┼──────────┼───────────┼────────────┤─────────┤   ├───────────────┼────────────────┼───────────────┼──────────────┼─────────────────┼────────┤
+        //│        │          │          │           │            │             │               │  SCROLL LEFT   │  SCROLL DOWN  │ SCROLL UP       SCROLL RIGHT   │        │
+            &trans   &trans     &trans     &trans      &trans       &trans        &trans          &msc SCRL_LEFT   &msc SCRL_DOWN  &msc SCRL_UP   &msc SCRL_RIGHT   &trans    
+	//╰────────┴──────────┴──────────┼───────────┼────────────┼─────────┤   ├───────────────┼────────────────┼───────────────┼──────────────┴─────────────────┴────────╯
+        //                               │           │            │         │   │  MS RIGHT CLK │  MS LEFT CLCK  │ MS MID CLCK   │ 
+                                           &trans      &trans       &trans        &mkp RCLK       &mkp LCLK        &mkp MCLK
+	//                               ╰───────────┴────────────┴─────────╯   ╰───────────────┴────────────────┴───────────────╯
             >;
         };
     };
