@@ -24,12 +24,12 @@
 #define FN_MOD      &lt FN_LAY DEL
 #define MOUSE_MOD   &lt MOUSE_LAY TAB
 
-#define HRML(k1, k2, k3, k4) &ht LGUI   k1 &ht LALT  k2  &ht LCTRL k3  &ht LSHIFT k4
+#define HRML(k1, k2, k3, k4) &vim_h &ht LALT  k2  &ht LCTRL k3  &ht LSHIFT k4
 #define HRMR(k1, k2, k3, k4) &ht RSHIFT k1 &ht RCTRL k2  &ht RALT  k3  &ht RGUI   k4
 
-// Special Key Behaviours for Graphite
 / {
     behaviors {
+        // Special Key Behaviours for Graphite
         ht: hold_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -74,6 +74,14 @@
             bindings = <NUM_MOD>, <&kp BKSP>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+
+        vim_h: vim_h {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&ht LGUI H>, <&kp H>;
+            mods = <(MOD_LSFT)>;
+        };
+
     };
 
     keymap {
@@ -128,8 +136,8 @@
 	//│        │ SUPER    │  LALT     │  LCTRL    │  LSHIFT    │        │   │  LEFT      │  DOWN       │  UP        │  RIGHT    │            │         │
             &trans   &kp LGUI   &kp LALT    &kp LCTRL   &kp LSHIFT   &trans       &kp LEFT     &kp DOWN      &kp UP       &kp RIGHT   &trans       &trans
         //├────────┼──────────┼───────────┼───────────┼────────────┤────────┤   ├────────────┼─────────────┼────────────┼───────────┼────────────┼─────────┤
-        //│        │          │           │           │            │            │            │  PAGE DN    │  PAGE UP   │  CapsLock │  PrintSc   │  INSERT │
-            &trans   &trans     &trans      &trans      &trans       &trans       &trans       &kp PG_DN     &kp PG_UP    &kp CAPS    &kp PSCRN    &kp INS  
+        //│        │          │           │           │            │            │  HOME      │  PAGE DN    │  PAGE UP   │  END      │   INSERT   │
+            &trans   &trans     &trans      &trans      &trans       &trans       &kp HOME     &kp PG_DN     &kp PG_UP    &kp END     &kp INS      &trans  
 	//╰────────┴──────────┴───────────┼───────────┼────────────┼────────┤   ├────────────┼─────────────┼────────────┼───────────┴────────────┴─────────╯
         //                                │           │            │        │   │  ENTER     │  BKSP       │  DEL       │ 
                                             &trans      &trans       &trans       &kp ENTER    &kp BKSP      &kp DEL
@@ -147,8 +155,8 @@
 	//│        │  F11    │  F4    │  F5    │  F6     │  PrintSc   │   │  MUTE        │ VOL UP      │ VOL DN      │ INC BRIGHT   │ DEC BRIGHT  │            │
             &trans   &kp F11   &kp F4   &kp F5   &kp F6    &kp PSCRN        &kp K_MUTE    &kp K_VOL_UP  &kp K_VOL_DN   &kp C_BRI_UP  &kp C_BRI_DN   &trans
         //├────────┼─────────┼────────┼────────┼─────────┤────────────┤   ├──────────────┼─────────────┼─────────────┼──────────────┼─────────────┼────────────┤
-        //│        │  F10    │  F1    │  F2    │  F3     │                │  PROFILE 0   │  PROFILE 1  │  PROFILE 2  │  PROFILE 3   │             │  INSERT    │
-            &trans   &kp F10   &kp F1   &kp F2   &kp F3    &trans           &bt BT_SEL 0   &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3                 &kp INS        
+        //│        │  F10    │  F1    │  F2    │  F3     │  CapLock       │  PROFILE 0   │  PROFILE 1  │  PROFILE 2  │  PROFILE 3   │             │  INSERT    │
+            &trans   &kp F10   &kp F1   &kp F2   &kp F3    &kp CAPS         &bt BT_SEL 0   &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3                 &kp INS        
 	//╰────────┴─────────┴────────┼────────┼─────────┼────────────┤   ├──────────────┼─────────────┼─────────────┼──────────────┴─────────────┴────────────╯
         //                            │        │         │            │   │              │             │             │ 
                                         &trans   &trans    &trans           &trans         &trans        &trans
@@ -159,19 +167,19 @@
         mouse_layer {
             display-name = "Mouse";
 	    bindings = <
-        //╭────────┬──────────┬──────────┬───────────┬────────────┬─────────╮   ╭────────────────┬────────────────┬───────────────┬────────────────┬─────────────────┬────────╮
-        //│        │          │          │           │            │         │   │  REDO          │  PASTE         │  COPY         │  CUT           │  UNDO           │        │
-            &trans   &trans     &trans     &trans      &trans       &trans        &kp K_REDO       &kp K_PASTE      &kp K_COPY      &kp K_CUT        &kp K_UNDO        &trans
-        //├────────┼──────────┼──────────┼───────────┼────────────┼─────────┤   ├────────────────┼────────────────┼───────────────┼────────────────┼─────────────────┼────────┤
-	//│        │ SUPER    │  LALT    │  LCTRL    │  LSHIFT    │         │   │  LEFT          │  DOWN          │ UP            │  RIGHT         │                 │
-            &trans   &kp LGUI   &kp LALT   &kp LCTRL   &kp LSHIFT   &trans        &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_UP   &mmv MOVE_RIGHT   &trans            &trans
-        //├────────┼──────────┼──────────┼───────────┼────────────┤─────────┤   ├────────────────┼────────────────┼───────────────┼────────────────┼─────────────────┼────────┤
-        //│        │          │          │           │            │             │                │  SCROLL LEFT   │  SCROLL DOWN  │ SCROLL UP         SCROLL RIGHT   │        │
-            &trans   &trans     &trans     &trans      &trans       &trans        &trans           &msc SCRL_LEFT   &msc SCRL_DOWN  &msc SCRL_UP     &msc SCRL_RIGHT   &trans    
-	//╰────────┴──────────┴──────────┼───────────┼────────────┼─────────┤   ├────────────────┼────────────────┼───────────────┼────────────────┴─────────────────┴────────╯
-        //                               │           │            │         │   │  MS RIGHT CLK  │  MS LEFT CLCK  │ MS MID CLCK   │ 
+        //╭────────┬──────────┬──────────┬───────────┬────────────┬─────────╮   ╭────────────────┬────────────────┬────────────────┬──────────────┬─────────────────┬────────╮
+        //│        │          │          │           │            │         │   │  REDO          │  PASTE         │  COPY          │  CUT         │  UNDO           │        │
+            &trans   &trans     &trans     &trans      &trans       &trans        &kp K_REDO       &kp K_PASTE      &kp K_COPY       &kp K_CUT      &kp K_UNDO        &trans
+        //├────────┼──────────┼──────────┼───────────┼────────────┼─────────┤   ├────────────────┼────────────────┼────────────────┼──────────────┼─────────────────┼────────┤
+	//│        │ SUPER    │  LALT    │  LCTRL    │  LSHIFT    │         │   │                   LEFT          │  DOWN          │  UP          │  RIGHT          │        │
+            &trans   &kp LGUI   &kp LALT   &kp LCTRL   &kp LSHIFT   &trans        &trans           &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_UP   &mmv MOVE_RIGHT   &trans
+        //├────────┼──────────┼──────────┼───────────┼────────────┤─────────┤   ├────────────────┼────────────────┼────────────────┼──────────────┼─────────────────┼────────┤
+        //│        │          │          │           │            │             │                │  SCROLL LEFT   │  SCROLL DOWN   │ SCROLL UP       SCROLL RIGHT   │        │
+            &trans   &trans     &trans     &trans      &trans       &trans        &trans           &msc SCRL_LEFT   &msc SCRL_DOWN   &msc SCRL_UP   &msc SCRL_RIGHT   &trans    
+	//╰────────┴──────────┴──────────┼───────────┼────────────┼─────────┤   ├────────────────┼────────────────┼────────────────┼──────────────┴─────────────────┴────────╯
+        //                               │           │            │         │   │  MS RIGHT CLK  │  MS LEFT CLCK  │ MS MID CLCK    │ 
                                            &trans      &trans       &trans        &mkp RCLK        &mkp LCLK        &mkp MCLK
-	//                               ╰───────────┴────────────┴─────────╯   ╰────────────────┴────────────────┴───────────────╯
+	//                               ╰───────────┴────────────┴─────────╯   ╰────────────────┴────────────────┴────────────────╯
             >;
         };
     };
