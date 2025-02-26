@@ -24,7 +24,7 @@
 #define FN_MOD      &lt FN_LAY DEL
 #define MOUSE_MOD   &lt MOUSE_LAY TAB
 
-#define HRML(k1, k2, k3, k4) &vim_h &ht LALT  k2  &ht LCTRL k3  &ht LSHIFT k4
+#define HRML(k1, k2, k3, k4) &ht LGUI   k1 &ht LALT  k2  &ht LCTRL k3  &ht LSHIFT k4
 #define HRMR(k1, k2, k3, k4) &ht RSHIFT k1 &ht RCTRL k2  &ht RALT  k3  &ht RGUI   k4
 
 / {
@@ -74,14 +74,6 @@
             bindings = <NUM_MOD>, <&kp BKSP>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-
-        vim_h: vim_h {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&ht LGUI H>, <&kp H>;
-            mods = <(MOD_LSFT)>;
-        };
-
     };
 
     keymap {
