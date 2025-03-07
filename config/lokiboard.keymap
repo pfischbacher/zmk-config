@@ -119,12 +119,6 @@
         default_layer {
             display-name = "Main";
             bindings = <
-
-    keymap {
-        compatible = "zmk,keymap";
-        default_layer {
-            display-name = "Main";
-            bindings = <
         //╭────────┬────────┬───────┬─────────┬─────────┬───────────╮   ╭───────────┬───────────┬─────────┬────────────┬───────────┬────────╮
         //│        │  B     │  L    │  D      │  W      │   Z       │   │   ' _     │  F        │  O      │  U         │  J        │        │
             &trans   &kp B    &kp L   &kp D     &kp W     &kp Z          &sqt_under   &kp F       &kp O     &kp U        &kp J       &trans 
