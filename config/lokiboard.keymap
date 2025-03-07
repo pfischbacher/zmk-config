@@ -99,7 +99,7 @@
             tapping-term-ms = <220>;
             quick-tap-ms = <150>;
 	    require-prior-idle-ms = <125>;
-            bindings = <LANG MOD>, <&fslh_lt>;
+            bindings = <LANG_MOD>, <&fslh_lt>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
