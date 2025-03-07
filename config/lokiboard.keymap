@@ -27,9 +27,12 @@
 #define HRML(k1, k2, k3, k4) &ht LGUI   k1 &ht LALT  k2  &ht LCTRL k3  &ht LSHIFT k4
 #define HRMR(k1, k2, k3, k4) &ht RSHIFT k1 &ht RCTRL k2  &ht RALT  k3  &ht RGUI   k4
 
-#define CUSTOM_1    &ht &comma_qmark DOT
-#define CUSTOM_2    &ht JP_COLON &minus_dqt
-#define CUSTOM_3    &ht LANG_MOD &fslh_lt
+//#define CUSTOM_1    &ht &comma_qmark DOT
+//#define CUSTOM_2    &ht JP_COLON &minus_dqt
+//#define CUSTOM_3    &ht LANG_MOD &fslh_lt
+#define CUSTOM_1    &custom_1 0 DOT
+#define CUSTOM_2    &custom_2 0 0
+#define CUSTOM_3    &custom_3 JP_HENKAKU 0
 
 / {
     behaviors {
@@ -47,51 +50,51 @@
         minus_dqt: minus_dqt {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp JP_MINUS>, <&kp JP_DQT>;
+            bindings = <&kp JP_MINUS, &kp JP_DQT>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         comma_qmark: comma_qmark {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp JP_COMMA>, <&kp JP_QMARK>;
+            bindings = <&kp JP_COMMA, &kp JP_QMARK>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         sqt_under: sqt_underscore {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp JP_SQT>, <&kp JP_UNDERSCORE>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        fslh_lt: fslh_lt {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp JP_FSLH>, <&kp JP_LT>;
+            bindings = <&kp JP_SQT, &kp JP_UNDERSCORE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         colon_semicolon: colon_semicolon {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp JP_COLON>, <&kp JP_SEMICOLON>;
+            bindings = <&kp JP_COLON, &kp JP_SEMICOLON>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        dacq: dot_ab_comma_qmark {
+        fslh_lt: fslh_lt {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp JP_FSLH, &kp JP_LT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        custom_1: dot_gt_comma_qmark {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <220>;
             quick-tap-ms = <150>;
 	    require-prior-idle-ms = <125>;
-            bindings = <&comma_qmark>, <&kp DOT>;
+            bindings = <&comma_qmark, <&kp>;
         };
 
-        mdcs: minus_dqt_colon_semicolon {
+        custom_2: minus_dqt_colon_semicolon {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             flavor = "tap-preferred";
             tapping-term-ms = <220>;
             quick-tap-ms = <150>;
@@ -99,16 +102,23 @@
             bindings = <&colon_semicolon>, <&minus_dqt>;
         };
 
-        fllm: fslh_lt_lang_mod {
+        custom_3: fslh_lt_language_hold_tap {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             flavor = "tap-preferred";
-            tapping-term-ms = <220>;
+            tapping-term-ms = <220>	;
             quick-tap-ms = <150>;
 	    require-prior-idle-ms = <125>;
-            bindings = <LANG_MOD>, <&fslh_lt>;
+            bindings = <&kp>, <&fslh_lt>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
+
+    keymap {
+        compatible = "zmk,keymap";
+        default_layer {
+            display-name = "Main";
+            bindings = <
 
     keymap {
         compatible = "zmk,keymap";
@@ -123,7 +133,7 @@
             &trans   HRML(N,  R,      T,        S)        &kp G           &kp Y       HRMR(H,     A,        E,           I)          &trans 
         //├────────┼────────┼───────┼─────────┼─────────┤───────────┤   ├───────────┼─────────────────────┼────────────┼───────────┼────────┤
         //│        │  Q     │  X    │  M      │  C      │  V        │   │  K        │  P        │  . >    │  - "       │  / <      │        │
-            &trans   &kp Q    &kp X   &kp M     &kp C     &kp V           &kp K       &kp P       &dacq     &mdcs        &fllm       &trans  
+            &trans   &kp Q    &kp X   &kp M     &kp C     &kp V           &kp K       &kp P       &custom_1 &custom_2    &custom_3   &trans  
         //╰────────┴────────┴───────┼─────────┼─────────┼───────────┤   ├───────────┼───────────┼─────────┼────────────┴───────────┴────────╯
         //                          │ ESC     │ NAV     │ MOUSE     │   │ ENTER     │ NUM Layer │  FN     │ 
                                       &kp ESC   NAV_MOD   MOUSE_MOD       &kp ENTER   NUM_MOD     FN_MOD
@@ -204,9 +214,3 @@
             &trans   &trans     &trans     &trans      &trans       &trans        &trans           &msc SCRL_LEFT   &msc SCRL_DOWN   &msc SCRL_UP   &msc SCRL_RIGHT   &trans    
 	//╰────────┴──────────┴──────────┼───────────┼────────────┼─────────┤   ├────────────────┼────────────────┼────────────────┼──────────────┴─────────────────┴────────╯
         //                               │           │            │         │   │  MS RIGHT CLK  │  MS LEFT CLCK  │ MS MID CLCK    │ 
-                                           &trans      &trans       &trans        &mkp RCLK        &mkp LCLK        &mkp MCLK
-	//                               ╰───────────┴────────────┴─────────╯   ╰────────────────┴────────────────┴────────────────╯
-            >;
-        };
-    };
-};
