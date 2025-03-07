@@ -94,7 +94,7 @@
 
         custom_2: minus_dqt_colon_semicolon {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <220>;
             quick-tap-ms = <150>;
@@ -104,7 +104,7 @@
 
         custom_3: fslh_lt_language_hold_tap {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <220>	;
             quick-tap-ms = <150>;
