@@ -29,7 +29,7 @@
 
 #define CUSTOM_1    &ht &comma_qmark DOT
 #define CUSTOM_2    &ht JP_COLON &minus_dqt
-#define CUSTOM_2    &fslh_lt_lang_mod
+#define CUSTOM_3    &ht LANG_MOD &fslh_lt
 
 / {
     behaviors {
@@ -79,7 +79,17 @@
             tapping-term-ms = <220>;
             quick-tap-ms = <150>;
 	    require-prior-idle-ms = <125>;
-            bindings = <&kp DOT>, <&comma_qmark>;
+            bindings = <&comma_qmark>, <&kp DOT>;
+        };
+
+        custom_2: minus_dqt_colon_star {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <0>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <220>;
+            quick-tap-ms = <150>;
+	    require-prior-idle-ms = <125>;
+            bindings = <&kp JP_COLON <&minus_dqt>;
         };
 
         custom_3: fslh_lt_language_hold_tap {
@@ -89,7 +99,7 @@
             tapping-term-ms = <220>;
             quick-tap-ms = <150>;
 	    require-prior-idle-ms = <125>;
-            bindings = <&kp JP_FSLH>, <&kp JP_LT>, <LANG_MOD>;
+            bindings = <LANG MOD,  <&fslh_lt>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
@@ -107,7 +117,7 @@
             &trans   HRML(N,  R,      T,        S)        &kp G           &kp Y       HRMR(H,     A,        E,           I)          &trans 
         //├────────┼────────┼───────┼─────────┼─────────┤───────────┤   ├───────────┼─────────────────────┼────────────┼───────────┼────────┤
         //│        │  Q     │  X    │  M      │  C      │  V        │   │  K        │  P        │  . >    │  - "       │  / <      │        │
-            &trans   &kp Q    &kp X   &kp M     &kp C     &kp V           &kp K       &kp P       &custom_1   &minus_dqt   &custom_3    &trans  
+            &trans   &kp Q    &kp X   &kp M     &kp C     &kp V           &kp K       &kp P       CUSTOM_1  CUSTOM_2   CUSTOM_3    &trans  
         //╰────────┴────────┴───────┼─────────┼─────────┼───────────┤   ├───────────┼───────────┼─────────┼────────────┴───────────┴────────╯
         //                          │ ESC     │ NAV     │ MOUSE     │   │ ENTER     │ NUM Layer │  FN     │ 
                                       &kp ESC   NAV_MOD   MOUSE_MOD       &kp ENTER   NUM_MOD     FN_MOD
