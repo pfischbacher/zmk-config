@@ -110,7 +110,6 @@
             quick-tap-ms = <150>;
 	    require-prior-idle-ms = <125>;
             bindings = <&kp>, <&fslh_lt>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
 
