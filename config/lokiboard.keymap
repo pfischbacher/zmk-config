@@ -127,7 +127,7 @@
             &trans   HRML(N,  R,      T,        S)        &kp G           &kp Y       HRMR(H,     A,        E,           I)          &trans 
         //├────────┼────────┼───────┼─────────┼─────────┤───────────┤   ├───────────┼─────────────────────┼────────────┼───────────┼────────┤
         //│        │  Q     │  X    │  M      │  C      │  V        │   │  K        │  P        │  . >    │  - "       │  / <      │        │
-            &trans   &kp Q    &kp X   &kp M     &kp C     &kp V           &kp K       &kp P       &custom_1 &custom_2    &custom_3   &trans  
+            &trans   &kp Q    &kp X   &kp M     &kp C     &kp V           &kp K       &kp P       CUSTOM_1 CUSTOM_2    CUSTOM_3   &trans  
         //╰────────┴────────┴───────┼─────────┼─────────┼───────────┤   ├───────────┼───────────┼─────────┼────────────┴───────────┴────────╯
         //                          │ ESC     │ NAV     │ MOUSE     │   │ ENTER     │ NUM Layer │  FN     │ 
                                       &kp ESC   NAV_MOD   MOUSE_MOD       &kp ENTER   NUM_MOD     FN_MOD
