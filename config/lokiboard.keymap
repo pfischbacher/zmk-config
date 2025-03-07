@@ -71,37 +71,6 @@
             bindings = <&kp JP_FSLH>, <&kp JP_LT>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-
-        custom_1: dot_gt_comma_qmark {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <220>;
-            quick-tap-ms = <150>;
-	    require-prior-idle-ms = <125>;
-            bindings = <&comma_qmark>, <&kp DOT>;
-        };
-
-        custom_2: minus_dqt_colon_star {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <220>;
-            quick-tap-ms = <150>;
-	    require-prior-idle-ms = <125>;
-            bindings = <&kp JP_COLON>, <&minus_dqt>;
-        };
-
-        custom_3: fslh_lt_language_hold_tap {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <220>;
-            quick-tap-ms = <150>;
-	    require-prior-idle-ms = <125>;
-            bindings = <LANG_MOD>, <&fslh_lt>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
     };
 
     keymap {
