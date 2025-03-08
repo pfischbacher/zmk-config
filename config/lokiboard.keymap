@@ -28,6 +28,8 @@
 #define HRMR(k1, k2, k3, k4) &ht RSHIFT k1 &ht RCTRL k2  &ht RALT  k3  &ht RGUI   k4
 
 #define CUSTOM_1    &custom_1 0 DOT
+#define CUSTOM_2    &custom_2 0 0
+#define CUSTOM_3    &custom_3 JP_HENKAKU 0
 
 / {
     behaviors {
@@ -63,6 +65,13 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
+        colon_semicolon: colon_semicolon {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp JP_COLON>, <&kp JP_SEMICOLON>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
         fslh_lt: fslh_lt {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
@@ -70,15 +79,35 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        //custom_1: dot_gt_comma_qmark {
-            //compatible = "zmk,behavior-hold-tap";
-            //#binding-cells = <2>;
-            //flavor = "tap-preferred";
-            //tapping-term-ms = <220>;
-            //quick-tap-ms = <150>;
-	    //require-prior-idle-ms = <125>;
-            //bindings = <&comma_qmark>, <&kp>;
-        //};
+        custom_1: dot_gt_comma_qmark {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <220>;
+            quick-tap-ms = <150>;
+	    require-prior-idle-ms = <125>;
+            bindings = <&comma_qmark>, <&kp>;
+        };
+
+        custom_2: minus_dqt_colon_semicolon {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <220>;
+            quick-tap-ms = <150>;
+	    require-prior-idle-ms = <125>;
+            bindings = <&colon_semicolon>, <&minus_dqt>;
+        };
+
+        custom_3: fslh_lt_language_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <220>	;
+            quick-tap-ms = <150>;
+	    require-prior-idle-ms = <125>;
+            bindings = <&kp>, <&fslh_lt>;
+        };
 
     };
 
@@ -95,7 +124,7 @@
             &trans   HRML(N,  R,      T,        S)        &kp G           &kp Y       HRMR(H,     A,        E,           I)          &trans 
         //├────────┼────────┼───────┼─────────┼─────────┤───────────┤   ├───────────┼─────────────────────┼────────────┼───────────┼────────┤
         //│        │  Q     │  X    │  M      │  C      │  V        │   │  K        │  P        │  . >    │  - "       │  / <      │        │
-            &trans   &kp Q    &kp X   &kp M     &kp C     &kp V           &kp K       &kp P       &kp DOT   &minus_dqt   &fslh_lt   &trans  
+            &trans   &kp Q    &kp X   &kp M     &kp C     &kp V           &kp K       &kp P       CUSTOM_1  CUSTOM_2    CUSTOM_3   &trans  
         //╰────────┴────────┴───────┼─────────┼─────────┼───────────┤   ├───────────┼───────────┼─────────┼────────────┴───────────┴────────╯
         //                          │ ESC     │ NAV     │ MOUSE     │   │ ENTER     │ NUM Layer │  FN     │ 
                                       &kp ESC   NAV_MOD   MOUSE_MOD       &kp ENTER   NUM_MOD     FN_MOD
@@ -176,3 +205,9 @@
             &trans   &trans     &trans     &trans      &trans       &trans        &trans           &msc SCRL_LEFT   &msc SCRL_DOWN   &msc SCRL_UP   &msc SCRL_RIGHT   &trans    
 	//╰────────┴──────────┴──────────┼───────────┼────────────┼─────────┤   ├────────────────┼────────────────┼────────────────┼──────────────┴─────────────────┴────────╯
         //                               │           │            │         │   │  MS RIGHT CLK  │  MS LEFT CLCK  │ MS MID CLCK    │ 
+                                           &trans      &trans       &trans        &mkp RCLK        &mkp LCLK        &mkp MCLK
+	//                               ╰───────────┴────────────┴─────────╯   ╰────────────────┴────────────────┴────────────────╯
+            >;
+        };
+    };
+};
