@@ -33,7 +33,7 @@
 
 / {
     behaviors {
-        &lt {
+        lt {
             tapping-term-ms = <220>;
             quick-tap-ms = <150>;
         };
