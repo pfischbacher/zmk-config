@@ -19,7 +19,7 @@
 
 // Switch Buttons
 #define LANG_MOD    &kp JP_HENKAKU
-#define NUM_MOD     &ht NUM_LAY BSPC
+#define NUM_MOD     &lt NUM_LAY BSPC
 #define NAV_MOD     &lt NAV_LAY SPACE
 #define FN_MOD      &lt FN_LAY DEL
 #define MOUSE_MOD   &lt MOUSE_LAY TAB
