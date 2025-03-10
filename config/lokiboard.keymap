@@ -30,9 +30,15 @@
 #define CUSTOM_1    &custom_1 0 DOT
 #define CUSTOM_2    &custom_2 0 0
 #define CUSTOM_3    &custom_3 JP_HENKAKU 0
+aheaheah
 
 / {
     behaviors {
+        &lt {
+            tapping-term-ms = <220>;
+            quick-tap-ms = <150>;
+        };
+
         // Special Key Behaviours for Graphite
         ht: hold_tap {
             compatible = "zmk,behavior-hold-tap";
