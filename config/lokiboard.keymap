@@ -19,10 +19,10 @@
 
 // Switch Buttons
 #define LANG_MOD    &kp JP_HENKAKU
-#define NUM_MOD     &lt NUM_LAY BSPC
-#define NAV_MOD     &lt NAV_LAY SPACE
-#define FN_MOD      &lt FN_LAY DEL
-#define MOUSE_MOD   &lt MOUSE_LAY TAB
+#define NUM_MOD     &hlt NUM_LAY BSPC
+#define NAV_MOD     &hlt NAV_LAY SPACE
+#define FN_MOD      &hlt FN_LAY DEL
+#define MOUSE_MOD   &hlt MOUSE_LAY TAB
 
 #define HRML(k1, k2, k3, k4) &ht LGUI   k1 &ht LALT  k2  &ht LCTRL k3  &ht LSHIFT k4
 #define HRMR(k1, k2, k3, k4) &ht RSHIFT k1 &ht RCTRL k2  &ht RALT  k3  &ht RGUI   k4
@@ -47,6 +47,16 @@
             quick-tap-ms = <150>;
 	    require-prior-idle-ms = <125>;
             bindings = <&kp>, <&kp>;
+        };
+
+        htl: hold_tap_layer {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <220>;
+            quick-tap-ms = <150>;
+	    require-prior-idle-ms = <125>;
+            bindings = <&mo>, <&kp>;
         };
 
         minus_dqt: minus_dqt {
@@ -123,21 +133,19 @@
             bindings = <
         //╭────────┬────────┬───────┬─────────┬─────────┬───────────╮   ╭───────────┬───────────┬─────────┬────────────┬───────────┬────────╮
         //│        │  B     │  L    │  D      │  W      │   Z       │   │   ' _     │  F        │  O      │  U         │  J        │        │
-            &trans   &kp B    &kp L   &kp D     &kp W     &kp Z          &sqt_under   &kp F       &kp O     &kp U        &kp J       &trans 
+            &trans   &kp B    &kp L   &kp D     &kp W     &kp Z          &sqt_under   &kp F       &kp O     &kp U        &kp J       &trans
         //├────────┼────────┼───────┼─────────┼─────────┼───────────┤   ├───────────┼───────────┼─────────┼────────────┼───────────┼────────┤
         //│        │  N     │  R    │  T      │  S      │  G        │   │  Y        │  H        │  A      │  E         │  I        │        │
-            &trans   HRML(N,  R,      T,        S)        &kp G           &kp Y       HRMR(H,     A,        E,           I)          &trans 
+            &trans   HRML(N,  R,      T,        S)        &kp G           &kp Y       HRMR(H,     A,        E,           I)          &trans
         //├────────┼────────┼───────┼─────────┼─────────┤───────────┤   ├───────────┼─────────────────────┼────────────┼───────────┼────────┤
         //│        │  Q     │  X    │  M      │  C      │  V        │   │  K        │  P        │  . >    │  - "       │  / <      │        │
-            &trans   &kp Q    &kp X   &kp M     &kp C     &kp V           &kp K       &kp P       CUSTOM_1  CUSTOM_2    CUSTOM_3   &trans  
+            &trans   &kp Q    &kp X   &kp M     &kp C     &kp V           &kp K       &kp P       CUSTOM_1  CUSTOM_2    CUSTOM_3     &trans
         //╰────────┴────────┴───────┼─────────┼─────────┼───────────┤   ├───────────┼───────────┼─────────┼────────────┴───────────┴────────╯
         //                          │ ESC     │ NAV     │ MOUSE     │   │ ENTER     │ NUM Layer │  FN     │ 
                                       &kp ESC   NAV_MOD   MOUSE_MOD       &kp ENTER   NUM_MOD     FN_MOD
         //                          ╰─────────┴─────────┴───────────╯   ╰───────────┴───────────┴─────────╯
             >;
         };
-
-
 
         num_layer {
             display-name = "Num";
@@ -146,14 +154,14 @@
         //│  ^ ~        │  [ {         │  7 '   │  8 (   │  9 )   │   ] }      │   │        │            │           │           │          │         │
             &kp JP_CARET  &kp JP_LBKT    &kp N7   &kp N8   &kp N9   &kp JP_RBKT      &trans   &trans       &trans       &trans      &trans    &trans
         //├─────────────┼──────────────┼────────┼────────┼────────┼────────────┤   ├────────┼────────────┼───────────┼───────────┼──────────┼─────────┤
-        //│  @ `        │ +            │  4 $   │  5 %   │  6 &   │  *         │   │        │ RSHIFT     │ RCTRL     │  RALT     │  RGUI    │         │
-            &kp JP_AT     &kp JP_PLUS     &kp N4   &kp N5   &kp N6  &kp JP_STAR       &trans   &kp RSHIFT   &kp RCTRL   &kp RALT    &kp RGUI   &trans
+        //│             │  @  `        │  4 $   │  5 %   │  6 &   │  - =       │   │        │ RSHIFT     │ RCTRL     │  RALT     │  RGUI    │         │
+            &trans        &kp JP_AT      &kp N4   &kp N5   &kp N6  &kp JP_MINUS      &trans   &kp RSHIFT   &kp RCTRL   &kp RALT    &kp RGUI   &trans
         //├─────────────┼──────────────┼────────┼────────┼────────┤────────────┤   ├────────┼────────────┼───────────┼───────────┼──────────┼─────────┤
-        //│  \ _        │  - =         │  1 !   │  2 "   │  3 #   │  / ?       │   │        │            │           │           │          │         │
-            &kp JP_BSLH   &kp JP_MINUS   &kp N1   &kp N2   &kp N3  &kp JP_FSLH       &trans   &trans       &trans       &trans      &trans     &trans
+        //│             │  \ _ (^)     │  1 !   │  2 "   │  3 #   │  +  (~)    │   │        │            │           │           │          │         │
+            &trans        &kp JP_BLSH    &kp N1   &kp N2   &kp N3  &kp JP_PLUS       &trans   &trans       &trans       &trans      &trans     &trans
         //╰─────────────┴──────────────┴────────┼────────┼────────┼────────────┤   ├────────┼────────────┼───────────┼───────────┴──────────┴─────────╯
-        //                                      │        │  0     │            │   │        │            │           │ 
-                                                  &trans   &kp N0   &trans           &trans   &trans       &trans 
+        //                                      │ .      │  0     │ BSPC       │   │        │            │           │ 
+                                                  &kp DOT  &kp N0   &kp BSPC         &trans   &trans       &trans 
         //                                      ╰────────┴────────┴────────────╯   ╰────────┴────────────┴───────────╯
             >;
         };
