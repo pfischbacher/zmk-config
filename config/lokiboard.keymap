@@ -28,6 +28,16 @@
             quick-tap-ms = <150>;
         };
 
+        hlt: hold_tap_layer {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <220>;
+            quick-tap-ms = <150>;
+            require-prior-idle-ms = <75>;
+            bindings = <&mo>, <&kp>;
+        };
+
         ht: hold_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
