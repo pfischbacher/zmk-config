@@ -8,7 +8,7 @@ manifest:
       revision: main
       import: app/west.yml
     - name: zmk-nice-nano
-      remote: nicekeyboards
+      remote: zmkfirmware
       revision: main
       path: modules/hardware/nice-nano
   self:
